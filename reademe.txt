@@ -1,0 +1,70 @@
+Socket Programming
+a.What your code files are and what each one of them does?
+
+Backend-Server EE:
+1. Receive the request from the main server about the "category" and "course code".
+2. Read the file "ee.txt" to get the specific information of the classes.
+3. Send the information of specific format to the Main Server OR not found
+
+Backend_Server CS:
+1. Receive the request from the main server about the "category" and "course code".
+2. Read the file "cs.txt" to get the specific information of the classes.
+3. Send the information of specific format to the Main Server OR not found
+
+Backend_Server C:
+1. Receive the request from the main server about the authentication.
+2. Read the file "cred.text" to get the specific information of the username and password(encrypted).
+3. Send back the information of authentication to promt the client if the authentication is true OR false.
+
+Client:
+1. Send the authentication information (username / password) to the main server.
+2. Send the specific category and corsecode to require information.
+
+
+ServerM:
+1. Receive the request of authentication from client and encrypted it with offset 4 and relay them to the serverC.
+2. Relay the information of authentication to client.
+3. Send specific requirements of certain courses to the backend server(EE/CS).
+4. relay the information of the courses that the client required to client.
+
+b.The format of all the messages exchanged
+
+Backend-Server EE:
+The Server<EE> is up and running using UDP on port <port number>.
+The Server<EE> received a request from the Main Server about the<category> of <course code>.
+The course information has been found: The <category> of <course code> is <information>.
+Didn’t find the course: <course code>.
+The Server<EE> finished sending the response to the Main Server.
+
+Backend-Server CS:
+The Server<CS> is up and running using UDP on port <port number>.
+The Server<CS> received a request from the Main Server about the<category> of <course code>.
+The course information has been found: The <category> of <course code> is <information>.
+Didn’t find the course: <course code>.
+The Server<CS> finished sending the response to the Main Server.
+
+Backend_Server C:
+The ServerC is up and running using UDP on port <port number>.
+The ServerC received an authentication request from the Main Server.
+The ServerC finished sending the response to the Main Server.
+
+Main Server:
+The main server is up and running.
+The main server received the authentication for <username> using TCP over port <port number>.
+The main server sent an authentication request to serverC.
+The main server received the result of the authentication request from ServerC using UDP over port <port number>.
+The main server sent the authentication result to the client.
+The main server received from <username> to query course <course code> about <category> using TCP over port <port number>.
+The main server sent a request to server<EE or CS>.
+The main server received the response from server<EE or CS> using UDP over port <port number>.
+The main server sent the query information to the client.
+
+c. Any idiosyncrasy of your project. It should say under waht conditions the project fails of any.
+The each course from the specific server might not be showed as expected.
+
+Referece:
+    beek website
+    Cplusplus.com
+    socket programming examples showed in YouTuBe
+    
+
